@@ -6,7 +6,7 @@ stages:
     branch: master
   properties:
   - name: SLACK_WEBHOOK_PATH
-    value: https://hooks.slack.com/services/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
+    value: Txxxxxxxx/Byyyyyyyy/zzzzzzzzzzzzzzzzzzzzzzzz
     type: text
   jobs:
   - name: Machine translation
@@ -42,7 +42,7 @@ stages:
   - type: stage
   properties:
   - name: SLACK_WEBHOOK_PATH
-    value: T03T7PX58/B067X25CJ/I9gxU8ys9j39YLui7Ol8fajO
+    value: Txxxxxxxx/Byyyyyyyy/zzzzzzzzzzzzzzzzzzzzzzzz
     type: text
   jobs:
   - name: Deploy
@@ -64,7 +64,10 @@ stages:
   - type: stage
   properties:
   - name: SLACK_WEBHOOK_PATH
-    value: https://hooks.slack.com/services/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
+    value: Txxxxxxxx/Byyyyyyyy/zzzzzzzzzzzzzzzzzzzzzzzz
+    type: text
+  - name: HOSTNAME
+    value: ${CF_APP}
     type: text
   jobs:
   - name: Dynamic Scan
@@ -78,6 +81,6 @@ stages:
     SETUP_SERVICE_SPACE: 'true'
     WAIT_TIME: '10'
     AD_BOUND_APP: ${CF_APP}
-    TARGET: http://${CF_APP}.mybluemix.net/
+    TARGET: http://${HOSTNAME}.mybluemix.net/
     AD_SCAN_TYPE: Staging
     

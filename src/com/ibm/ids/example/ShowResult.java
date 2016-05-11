@@ -42,7 +42,7 @@ public class ShowResult extends HttpServlet {
     //This allows for the user to enter script content that will be processesed 
     //For example ?name=<img src=x onerror=alert("ha") />
     //To remove this vunerability use the doGet method below
-/*
+
     public void doGet( HttpServletRequest request, HttpServletResponse response) throws IOException
     {
         String name = request.getParameter( "name" );
@@ -61,7 +61,7 @@ public class ShowResult extends HttpServlet {
         out.println( "</BODY></HTML>" );
     }
 
-*/
+    /*
     //STATIC SCAN 
     // this version of doGet filters out bad input 
     private Pattern namePattern = Pattern.compile("^[a-zA-Z]{3,10}$");
@@ -94,7 +94,7 @@ public class ShowResult extends HttpServlet {
                 }
             }  
     }
-
+*/
     public static String getVulnerableSource(String file)
         throws java.io.IOException, java.io.FileNotFoundException {
         FileInputStream fis = new FileInputStream(file);
@@ -111,7 +111,7 @@ public class ShowResult extends HttpServlet {
         PrintWriter writer = new PrintWriter(fos);
         //STATIC SCAN 
         //to remove this vunerability issue use writer.append rather than writer.write 
-        //writer.write(str); 
-        writer.append(str);
+        writer.write(str); 
+        //writer.append(str);
     }
 }

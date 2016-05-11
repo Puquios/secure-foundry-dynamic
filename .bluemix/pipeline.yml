@@ -78,5 +78,6 @@ stages:
     SETUP_SERVICE_SPACE: 'true'
     WAIT_TIME: '10'
     AD_BOUND_APP: ${CF_APP}
+    TARGET: http://${CF_APP}.mybluemix.net/
     AD_SCAN_TYPE: Staging
     

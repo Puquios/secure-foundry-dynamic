@@ -36,7 +36,7 @@ public class ShowResult extends HttpServlet {
         wordCountFinder = new WordCountFinder();
     }
 
-    public void printInputForm(out) {
+    public void printInputForm(PrintWriter out) {
         out.println( "<BR>   <form> <input type=\"text\" name=\"name\" value=\"John Doe\"> <input type=\"submit\" value=\"Submit\"> </form>" );
     }
 

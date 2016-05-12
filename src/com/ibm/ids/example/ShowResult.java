@@ -58,7 +58,7 @@ public class ShowResult extends HttpServlet {
 
         out.println( "<HTML><HEAD><TITLE>Hello World</TITLE></HEAD><BODY>" );
         out.println( "Hello, " + name );
-        out.println( "<BR>   <form> <input type=\"text\" name=\"name\" value=\"John Doe\"> <input type=\"submit\" value=\"Submit\"> </form>" )
+        out.println( "<BR>   <form> <input type=\"text\" name=\"name\" value=\"John Doe\"> <input type=\"submit\" value=\"Submit\"> </form>" );
         out.println( "</BODY></HTML>" );
     }
 

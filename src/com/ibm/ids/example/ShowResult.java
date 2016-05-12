@@ -36,6 +36,9 @@ public class ShowResult extends HttpServlet {
         wordCountFinder = new WordCountFinder();
     }
 
+    public void printInputForm(out) {
+        out.println( "<BR>   <form> <input type=\"text\" name=\"name\" value=\"John Doe\"> <input type=\"submit\" value=\"Submit\"> </form>" );
+    }
 
     //STATIC SCAN 
     //The following code prints input from the user to the page.
@@ -58,11 +61,11 @@ public class ShowResult extends HttpServlet {
 
         out.println( "<HTML><HEAD><TITLE>Hello World</TITLE></HEAD><BODY>" );
         out.println( "Hello, " + name );
-        out.println( "<BR>   <form> <input type=\"text\" name=\"name\" value=\"John Doe\"> <input type=\"submit\" value=\"Submit\"> </form>" );
+        printInputForm(out);
         out.println( "</BODY></HTML>" );
     }
-
-    /*
+/*
+    
     //STATIC SCAN 
     // this version of doGet filters out bad input 
     private Pattern namePattern = Pattern.compile("^[a-zA-Z]{3,10}$");
@@ -79,19 +82,28 @@ public class ShowResult extends HttpServlet {
 
             if ( name == null ){
                 String nobody = messages.getString("nobody");
-                out.println( "<HTML><HEAD><TITLE>Hello World</TITLE></HEAD><BODY>"+nobody+"</BODY></HTML>");
+                out.println( "<HTML><HEAD><TITLE>Hello World</TITLE></HEAD><BODY>"+nobody);
+                printInputForm(out);
+                out.println( "</BODY></HTML>");
             }else if ( !namePattern.matcher( name ).matches() )
             {
-                out.println( "<HTML><HEAD><TITLE>Hello World</TITLE></HEAD><BODY>" + error + " </BODY></HTML>");
+                out.println( "<HTML><HEAD><TITLE>Hello World</TITLE></HEAD><BODY>" + error);
+                printInputForm(out);
+                out.println( " </BODY></HTML>");
             }else{ 
                 response.setContentType( "text/html" );
                 String hello = messages.getString("hello");
                 String question = messages.getString("question");
                 String escapedName = name.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;");
                 if (wordCount >= 2){
-                    out.println( "<HTML><HEAD><TITLE>Hello World</TITLE></HEAD><BODY>"+hello+", " + escapedName + "</BODY></HTML>");
+                    out.println( "<HTML><HEAD><TITLE>Hello World</TITLE></HEAD><BODY>"+hello+", " + escapedName);
+                    printInputForm(out);
+                    out.println( "</BODY></HTML>");
+                    
                 }else { 
-                    out.println( "<HTML><HEAD><TITLE>Hello World</TITLE></HEAD><BODY>"+hello+", " + escapedName + " " + question + "</BODY></HTML>");
+                    out.println( "<HTML><HEAD><TITLE>Hello World</TITLE></HEAD><BODY>"+hello+", " + escapedName + " " + question);
+                    printInputForm(out);
+                    out.println( "</BODY></HTML>");
                 }
             }  
     }
